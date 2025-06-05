@@ -6,27 +6,32 @@ li,
 a,
 button,
 input,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
 img,
 image,
 svg,
 path,
 g,
 canvas {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
-  background-color: transparent;
   border: none;
   text-decoration: none;
-  font-family: 'Roboto';
-  user-select: none;
   list-style: none;
   position: relative;
+}
+
+button {
+  cursor: pointer;
+}
+
+button {
+  transition: transform 0.15s ease-in-out;
+}
+
+button:hover {
+  transition: all 0.15s ease-in-out;
+}
+
+button:active {
+  transform: scale(0.97);
+  transition: transform 0.15s ease-in-out;
 }
