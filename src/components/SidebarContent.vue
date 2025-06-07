@@ -17,7 +17,7 @@ function confirmRestart() {
 
 <template>
   <div class="flex flex-col items-center">
-    <img src="../../public/favicon.ico" alt="Game Logo" class="w-16 h-16 mb-4" />
+    <img src="../../public/favicon.ico" alt="Game Logo" class="w-16 h-16 mb-4 rounded-xl" />
     <h1 class="text-xl font-bold text-center leading-snug tracking-wide uppercase">The<br />Kingdom of<br />Mugloar</h1>
 
     <nav class="mt-10 w-full space-y-2">

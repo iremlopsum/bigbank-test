@@ -34,8 +34,6 @@ const ui = useUIStore()
         class="flex flex-wrap h-auto md:h-12 justify-center md:justify-end items-center gap-6 text-sm md:text-base font-medium text-text-main">
         <GameStat :icon="LivesIcon" :value="game.lives!" label="Lives" />
         <GameStat :icon="GoldIcon" :value="game.gold!" label="Gold" />
-        <GameStat :icon="ScoreIcon" :value="game.level!" label="Level" />
-        <GameStat :icon="LevelIcon" :value="game.score!" label="Score" />
         <GameStat :icon="TurnIcon" :value="game.turn!" label="Turn" />
       </div>
     </div>

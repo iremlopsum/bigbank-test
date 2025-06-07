@@ -17,13 +17,13 @@ export interface ReputationResponse {
 export interface Message {
   adId: string
   message: string
-  reward: string
+  reward: number
   expiresIn: number
+  encrypted: boolean | null
+  probability: string
 }
 
-export interface MessageListResponse {
-  messages: Message[]
-}
+export type MessageListResponse = Message[]
 
 export interface SolveResponse {
   success: boolean
