@@ -1,0 +1,22 @@
+@theme {
+  /* Base Colors */
+  --color-background: #f3e3c5; /* Warm parchment */
+  --color-surface: #fffaf0; /* Light paper tone for cards/buttons */
+
+  /* Primary UI */
+  --color-primary: #872d21; /* Rich dragon red (used for "Start New Game" button) */
+  --color-primary-hover: #a63e2f; /* Slightly brighter for hover/focus states */
+
+  /* Text Colors */
+  --color-text-main: #3a1c0d; /* Deep brown used for title/body text */
+  --color--text-subtle: #5a3725; /* Softer brown for subtitles or captions */
+
+  /* Accent Colors */
+  --color-accent-orange: #e18c25; /* Highlight elements, dragons, rooftops */
+  --color-accent-yellow: #f2c94c; /* Secondary highlight for buildings/smaller dragons */
+  --color-accent-brown: #6b3b2c; /* Darker accent — shadows or backgrounds */
+
+  /* Footer & Dark Areas */
+  --color-footer-bg: #3a1c0d; /* Used in the bottom footer strip */
+  --color-footer-text: #f8f5ed; /* Off-white for footer text */
+}
