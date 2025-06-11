@@ -1,17 +1,10 @@
 <script setup lang="ts">
-import { useRoute, useRouter } from 'vue-router'
-import { useUIStore } from '@/stores/ui-store'
+import { useRoute } from 'vue-router'
 
 const route = useRoute()
-const router = useRouter()
-const uiStore = useUIStore()
 
 function isActive(path: string) {
   return route.path === path
-}
-
-function confirmRestart() {
-  uiStore.showErrorModal('Restart Game?')
 }
 </script>
 
@@ -37,10 +30,4 @@ function confirmRestart() {
       </router-link>
     </nav>
   </div>
-
-  <button
-    @click="confirmRestart"
-    class="w-full mt-10 bg-primary text-footer-text font-semibold py-3 rounded-md hover:bg-primary-hover transition">
-    Restart Game
-  </button>
 </template>
