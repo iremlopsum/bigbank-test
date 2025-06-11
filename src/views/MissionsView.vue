@@ -5,6 +5,7 @@ import { MugloarAPI } from '@/api/mugloar-api'
 import LayoutView from '@/views/LayoutView.vue'
 import type { Message } from '@/types/api-types'
 import { useGameStore } from '@/stores/game-store'
+import { rot13ToString } from '@/utils/encryption-utils'
 
 const ui = useUIStore()
 const gameStore = useGameStore()
@@ -29,10 +30,19 @@ async function fetchMessages() {
   error.value = null
   try {
     const rawMessages = await MugloarAPI.getMessages(gameStore.gameId)
+
     messages.value = rawMessages.map(msg => ({
       ...msg,
-      decodedMessage: msg.encrypted ? atob(msg.message) : msg.message,
-      decodedProbability: msg.encrypted ? atob(msg.probability) : msg.probability,
+      // Decrypting base64 or ROT13 encoded fields
+      adId: msg.encrypted === 1 ? atob(msg.adId) : msg.encrypted === 2 ? rot13ToString(msg.adId) : msg.adId,
+      decodedMessage:
+        msg.encrypted === 1 ? atob(msg.message) : msg.encrypted === 2 ? rot13ToString(msg.message) : msg.message,
+      decodedProbability:
+        msg.encrypted === 1
+          ? atob(msg.probability)
+          : msg.encrypted === 2
+            ? rot13ToString(msg.probability)
+            : msg.probability,
     }))
   } catch (err) {
     error.value = (err as Error).message
@@ -57,10 +67,15 @@ async function solve(adId: string) {
 
     // Handle Game Over
     if (result.lives === 0) {
-      console.log('Game Over! You have no lives left.')
-      // TODO: Show custom "You Died" modal
-      // ui.showDeathModal("You died a tragic bureaucratic death.")
+      console.log('Game Over!')
+      ui.showDeathModal()
       return
+    }
+
+    if (result.success) {
+      ui.showToast('Mission complete!', 'success')
+    } else {
+      ui.showToast('You failed and lost a life.', 'failure')
     }
 
     // Refresh missions
@@ -81,9 +96,7 @@ onMounted(fetchMessages)
     <div class="p-6">
       <h2 class="text-xl font-bold mb-4">Available Missions</h2>
 
-      <div v-if="isLoading" class="text-text-subtle">Loading missions…</div>
-      <div v-else-if="error" class="text-red-700 font-medium">{{ error }}</div>
-      <div v-else-if="messages.length === 0" class="text-text-subtle">No missions available.</div>
+      <div v-if="messages.length === 0" class="text-text-subtle">Loading missions.</div>
 
       <ul v-else class="space-y-4">
         <li
@@ -96,7 +109,9 @@ onMounted(fetchMessages)
               <span>💰 {{ msg.reward }}g</span>
               <span>⏳ {{ msg.expiresIn }} turns</span>
               <span>🎲 {{ msg.decodedProbability }}</span>
-              <span v-if="msg.encrypted" title="Encrypted Message">🔐 Encrypted</span>
+              <span v-if="msg.encrypted" title="Encrypted Message"
+                >🔐 Encrypted {{ msg.encrypted === 1 ? '(base64)' : msg.encrypted === 2 ? '(rot13)' : '' }}</span
+              >
             </div>
           </div>
 

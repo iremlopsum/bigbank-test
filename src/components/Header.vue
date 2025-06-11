@@ -5,10 +5,8 @@ import { useGameStore } from '@/stores/game-store'
 import GameStat from '@/components/GameStat.vue'
 
 import GoldIcon from '@/assets/svgs/cash.svg'
-import ScoreIcon from '@/assets/svgs/3d-stairs.svg'
 import TurnIcon from '@/assets/svgs/pocket-watch.svg'
 import LivesIcon from '@/assets/svgs/heart-wings.svg'
-import LevelIcon from '@/assets/svgs/bleeding-eye.svg'
 
 const game = useGameStore()
 const ui = useUIStore()
@@ -32,9 +30,9 @@ const ui = useUIStore()
       <!-- Row 2: Stats -->
       <div
         class="flex flex-wrap h-auto md:h-12 justify-center md:justify-end items-center gap-6 text-sm md:text-base font-medium text-text-main">
-        <GameStat :icon="LivesIcon" :value="game.lives!" label="Lives" />
-        <GameStat :icon="GoldIcon" :value="game.gold!" label="Gold" />
-        <GameStat :icon="TurnIcon" :value="game.turn!" label="Turn" />
+        <GameStat icon="❤️" :value="game.lives!" label="Lives" />
+        <GameStat icon="💰" :value="game.gold!" label="Gold" />
+        <GameStat icon="⏳" :value="game.turn!" label="Turn" />
       </div>
     </div>
   </header>

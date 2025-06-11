@@ -1,38 +1,38 @@
 export interface GameResponse {
-  gameId: string
-  lives: number
   gold: number
+  turn: number
+  lives: number
   level: number
   score: number
+  gameId: string
   highScore: number
-  turn: number
 }
 
 export interface ReputationResponse {
-  people: number
   state: number
+  people: number
   underworld: number
 }
 
 export interface Message {
   adId: string
-  message: string
   reward: number
+  message: string
   expiresIn: number
-  encrypted: boolean | null
   probability: string
+  encrypted: 1 | 2 | null
 }
 
 export type MessageListResponse = Message[]
 
 export interface SolveResponse {
-  success: boolean
-  lives: number
   gold: number
-  score: number
-  highScore: number
   turn: number
+  lives: number
+  score: number
   message: string
+  success: boolean
+  highScore: number
 }
 
 export interface ShopItem {
@@ -41,14 +41,12 @@ export interface ShopItem {
   cost: number
 }
 
-export interface ShopItemsResponse {
-  items: ShopItem[]
-}
+export type ShopItemsResponse = ShopItem[]
 
 export interface BuyItemResponse {
-  shoppingSuccess: string
   gold: number
+  turn: number
   lives: number
   level: number
-  turn: number
+  shoppingSuccess: string
 }

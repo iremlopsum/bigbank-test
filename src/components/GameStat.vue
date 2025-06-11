@@ -8,7 +8,12 @@ defineProps<{
 
 <template>
   <div class="relative group flex items-center gap-2 cursor-default">
-    <img :src="icon" :alt="label" class="w-7 h-7 object-cover" />
+    <!-- Emoji Icon -->
+    <span class="text-lg text-center whitespace-nowrap">
+      {{ icon }}
+    </span>
+
+    <!-- Value -->
     <span>{{ value }}</span>
 
     <!-- Tooltip -->

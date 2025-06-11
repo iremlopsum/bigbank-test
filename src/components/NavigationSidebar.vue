@@ -8,7 +8,7 @@ const uiStore = useUIStore()
 
 <template>
   <!-- Desktop Sidebar -->
-  <aside class="hidden md:flex w-96 bg-footer-bg text-footer-text flex-col justify-between px-6 py-8">
+  <aside class="hidden md:flex w-96 h-screen bg-footer-bg text-footer-text flex-col justify-between px-6 py-8">
     <SidebarContent />
   </aside>
 

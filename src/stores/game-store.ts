@@ -21,5 +21,14 @@ export const useGameStore = defineStore('game', {
       this.gameId = data.gameId
       this.highScore = data.highScore
     },
+    reset() {
+      this.gold = null
+      this.turn = null
+      this.lives = null
+      this.level = null
+      this.score = null
+      this.gameId = null
+      this.highScore = null
+    },
   },
 })
