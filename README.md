@@ -45,13 +45,13 @@ cd bigbank-test
 ### 2. Install dependencies
 
 ```bash
-yarn install
+npm install
 ```
 
 ### 3. Start the development server
 
 ```bash
-yarn dev
+npm run dev
 ```
 ---
 
